@@ -13,10 +13,10 @@ node {
 
   //build your gradle flavor, passes the current build number as a parameter to gradle
   sh "./gradlew assembleDebug"
-  sh"./gradlew assembleAndroidTest"
+  sh "./gradlew assembleAndroidTest"
 
 
-curl -X POST \
+ sh "./curl -X POST \
   http://192.168.2.135:80/api/v1/execution-plan/execute-test-plan \
   -H 'authorization: Basic a2hhbGVkYTpFeHBlcml0ZXN0MjAxMg==' \
   -H 'cache-control: no-cache' \
@@ -26,7 +26,7 @@ curl -X POST \
   -F 'testApp=app/build/outputs/apk/app-debug-androidTest.apk' \
   -F 'deviceQueries=@os='\''android'\''' \
   -F resultType=xml \
-  -F testPlan=id:38
+  -F testPlan=id:38"
 
 
   stage 'Stage Archive'
