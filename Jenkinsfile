@@ -14,14 +14,14 @@ node {
   echo "Building flavor ${flavor}"
 
   //build your gradle flavor, passes the current build number as a parameter to gradle
-  sh "'./gradlew build'"
+  sh "./gradlew build"
 
   stage 'Stage Archive'
   //tell Jenkins to archive the apks
   archiveArtifacts artifacts: 'app/build/outputs/apk/*.apk', fingerprint: true
 
   stage 'Stage Upload To Fabric'
-  sh "./gradlew clean
+  sh "./gradlew clean"
 }
 
 // Pulls the android flavor out of the branch name the branch is prepended with /QA_
