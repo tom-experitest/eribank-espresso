@@ -23,6 +23,11 @@ node {
   //tell Jenkins to archive the apks
   archiveArtifacts artifacts: 'app/build/outputs/apk/*.apk', fingerprint: true
 
+   stage('Results') {
+      junit '**/target/TEST.xml'
+      archive 'target/*.jar'
+   }
+
 
   stage 'Stage Upload To Fabric'
   sh "./gradlew clean"
