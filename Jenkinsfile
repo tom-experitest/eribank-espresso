@@ -14,7 +14,7 @@ node {
   echo "Building flavor ${flavor}"
 
   //build your gradle flavor, passes the current build number as a parameter to gradle
-  sh "./gradlew build
+  sh "'./gradlew build'"
 
   stage 'Stage Archive'
   //tell Jenkins to archive the apks
