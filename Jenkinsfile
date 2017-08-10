@@ -15,7 +15,9 @@ node {
   sh "./gradlew assembleDebug"
   sh "./gradlew assembleAndroidTest"
 
-    sh "./scripts/delete-previous-results.sh"
+  sh "chmod +x ./scripts/delete-previous-results.sh"
+
+  sh "./scripts/delete-previous-results.sh"
     stage 'Run Tests'
  sh "./scripts/run-tests.sh"
 
