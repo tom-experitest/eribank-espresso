@@ -1,2 +1,5 @@
 #!/bin/bash
-rm ./target/TEST.xml
+if [ -f ./target/TEST.xml ]
+then
+    rm ./target/TEST.xml
+fi
