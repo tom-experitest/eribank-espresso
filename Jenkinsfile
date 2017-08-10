@@ -20,14 +20,14 @@ node {
 
   sh "./scripts/delete-previous-results.sh"
     stage 'Run Tests'
- sh "./scripts/run-tests.sh"
+ sh "curl -X POST http://192.168.2.135:80/api/v1/execution-plan/execute-test-plan -H 'authorization: Basic a2hhbGVkYTpFeHBlcml0ZXN0MjAxMg==' -H 'cache-control: no-cache' -H 'content-type: multipart/form-data; --form-string 'deviceQueries=@os='\''android'\''' -F testPlan=Default:androidNewSuite --form-string 'app=@/app/build/outputs/apk/app-debug.apk' --form-string 'testApp=@/app/build/outputs/apk/app-debug-androidTest.apk' > ./target/TEST.xml"
 
 
   stage 'Stage Archive'
   //tell Jenkins to archive the apks
   archiveArtifacts artifacts: 'app/build/outputs/apk/*.apk', fingerprint: true
 
-sh "./scripts/wait-for-file.sh"
+//sh "./scripts/wait-for-file.sh"
 
    stage('Results') {
       junit '**/target/TEST.xml'
