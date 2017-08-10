@@ -16,6 +16,7 @@ node {
   sh "./gradlew assembleAndroidTest"
 
   sh "chmod +x ./scripts/delete-previous-results.sh"
+  sh "chmod +x ./scripts/wait-for-file.sh"
 
   sh "./scripts/delete-previous-results.sh"
     stage 'Run Tests'
