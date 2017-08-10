@@ -18,10 +18,12 @@ node {
 
     stage 'Run Tests'
  sh "./scripts/run-tests.sh"
+ sh "./scripts/wait-for-file.sh"
 
   stage 'Stage Archive'
   //tell Jenkins to archive the apks
   archiveArtifacts artifacts: 'app/build/outputs/apk/*.apk', fingerprint: true
+
 
    stage('Results') {
       junit '**/target/TEST.xml'
@@ -33,4 +35,8 @@ node {
   sh "./gradlew clean"
 }
 
+
+  stage 'Stage Upload To Fabric'
+  sh "./gradlew clean"
+}
 // Pulls the android flavor out of the branch name the branch is prepended with /QA_
