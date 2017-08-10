@@ -15,13 +15,16 @@ node {
   sh "./gradlew assembleDebug"
   sh "./gradlew assembleAndroidTest"
 
-
+    sh "./scripts/delete-previous-results.sh"
     stage 'Run Tests'
  sh "./scripts/run-tests.sh"
+
 
   stage 'Stage Archive'
   //tell Jenkins to archive the apks
   archiveArtifacts artifacts: 'app/build/outputs/apk/*.apk', fingerprint: true
+
+sh "./scripts/wait-for-file.sh"
 
    stage('Results') {
       junit '**/target/TEST.xml'
