@@ -21,12 +21,12 @@ node {
 
   stage 'Stage Archive'
   //tell Jenkins to archive the apks
-  archiveArtifacts artifacts: 'app\build\outputs\apk\*.apk', fingerprint: true
+  archiveArtifacts artifacts: 'app/build/outputs/apk/*.apk', fingerprint: true
 
 
    stage('Results') {
-      junit '**\target\TEST.xml'
-      archive 'target\*.jar'
+      junit '**/target/TEST.xml'
+      archive 'target/*.jar'
    }
 
 
