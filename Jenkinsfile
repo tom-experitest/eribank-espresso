@@ -12,20 +12,26 @@ node {
 
 
   //build your gradle flavor, passes the current build number as a parameter to gradle
-  sh "./gradlew assembleDebug"
-  sh "./gradlew assembleAndroidTest"
-
+  "./gradlew assembleDebug"
+  "./gradlew assembleAndroidTest"
 
     stage 'Run Tests'
-   sh "./scripts/run-tests.sh"
+ bat "./scripts/run-tests.bat"
+
 
   stage 'Stage Archive'
   //tell Jenkins to archive the apks
-  archiveArtifacts artifacts: 'app/build/outputs/apk/*.apk', fingerprint: true
+  archiveArtifacts artifacts: 'app\build\outputs\apk\*.apk', fingerprint: true
 
-   stage 'clean' {
-       sh "./gradlew clean"
-  }
+
+   stage('Results') {
+      junit '**\target\TEST.xml'
+      archive 'target\*.jar'
+   }
+
+
+  stage 'Stage Upload To Fabric'
+  sh "./gradlew clean"
 }
 
 // Pulls the android flavor out of the branch name the branch is prepended with /QA_
