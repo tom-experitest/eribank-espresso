@@ -12,8 +12,8 @@ node {
 
 
   //build your gradle flavor, passes the current build number as a parameter to gradle
-  "./gradlew assembleDebug"
-  "./gradlew assembleAndroidTest"
+   sh "./gradlew assembleDebug"
+   sh "./gradlew assembleAndroidTest"
 
     stage 'Run Tests'
     sh "./scripts/run-tests.sh"
