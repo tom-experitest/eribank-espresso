@@ -9,9 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
-import com.experitest.ExperiBank.LoginActivity;
-import com.experitest.ExperiBank.R;
-
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -40,9 +37,7 @@ public class LongLogin {
 
     @Test
     public void loginActivityTest() {
-        for(int i = 0; i < 2; i ++) {
-            runTest();
-        }
+       runTest();
     }
 
     private void runTest() {
