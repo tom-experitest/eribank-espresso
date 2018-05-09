@@ -40,7 +40,7 @@ public class LongLogin {
 
     @Test
     public void loginActivityTest() {
-        for(int i = 0; i < 40; i ++) {
+        for(int i = 0; i < 2; i ++) {
             runTest();
         }
     }
