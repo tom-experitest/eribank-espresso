@@ -16,7 +16,7 @@ node {
   "./gradlew assembleAndroidTest"
 
     stage 'Run Tests'
- bat "./scripts/run-tests.bat"
+    sh "./scripts/run-tests.sh"
 
 
   stage 'Stage Archive'
